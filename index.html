@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethix Business Consultancy Pvt. Ltd.</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Optional: Add custom Tailwind configuration here if needed
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], // Use Inter font
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styles for smooth scroll and body */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the modal overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center;
+            align-items: center;
+            z-index: 50; /* Make sure it's on top */
+            opacity: 0; /* Hidden by default */
+            visibility: hidden; /* Hidden by default */
+            transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+        }
+        .modal-overlay.active {
+            opacity: 1; /* Visible */
+            visibility: visible; /* Visible */
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative; /* Needed for absolute positioning of close button */
+            width: 90%; /* Responsive width */
+            max-width: 500px; /* Max width for larger screens */
+            transform: scale(0.95); /* Start slightly smaller */
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1); /* Scale to full size when active */
+        }
+        .close-button {
+            position: absolute;
+            top: 0.75rem; /* Adjust position */
+            left: 0.75rem; /* Adjust position */
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            color: #6b7280; /* Gray color */
+            padding: 0.25rem;
+        }
+        .close-button:hover {
+            color: #1f2937; /* Darker gray on hover */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header/Navigation Placeholder -->
+    <header class="bg-white shadow-md fixed w-full z-10 top-0">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600">Ethix Consultancy</a>
+            <div>
+                <!-- Add Navigation Links Here (e.g., About, Services, Contact) -->
+                <a href="#about" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded">About</a>
+                <a href="#services" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded">Services</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="pt-16"> <!-- Padding top to offset fixed header -->
+
+        <!-- Hero Section Placeholder -->
+        <section id="hero" class="bg-blue-600 text-white py-20 px-6 text-center">
+            <div class="container mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Empowering Startups & MSMEs</h1>
+                <p class="text-lg md:text-xl mb-8">Your trusted partner for government funding, loans, and registrations.</p>
+                <a href="#contact" class="bg-white text-blue-600 font-semibold py-2 px-6 rounded-full hover:bg-gray-200 transition duration-300">Get Started</a>
+            </div>
+        </section>
+
+        <!-- About Us Section Placeholder -->
+        <section id="about" class="py-16 px-6 bg-white">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">About Ethix Business Consultancy</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+                    Ethix Business Consultancy Pvt. Ltd. is dedicated to helping startups and MSMEs navigate the complexities of government schemes, funding options, and essential registrations. Our mission is to fuel your growth.
+                    <!-- Add more about your company -->
+                </p>
+            </div>
+        </section>
+
+        <!-- Services Section Placeholder -->
+        <section id="services" class="py-16 px-6 bg-gray-50">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-10 text-gray-800">Our Services</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">Government Funding Assistance</h3>
+                        <p class="text-gray-600">Expert guidance on accessing various government grants and schemes.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">Business Loans Facilitation</h3>
+                        <p class="text-gray-600">Connecting you with the right financial institutions for business loans.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">Startup Registrations</h3>
+                        <p class="text-gray-600">Hassle-free Udyam, DPIIT, Tax Exemptions, and other essential registrations.</p>
+                    </div>
+                    <!-- Add more service cards as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Placeholder -->
+        <section id="why-us" class="py-16 px-6 bg-white">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">Why Choose Us?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+                    We offer personalized support, deep expertise in government regulations, and a proven track record of helping businesses succeed.
+                    <!-- Add more reasons -->
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section Placeholder -->
+        <section id="contact" class="py-16 px-6 bg-gray-800 text-white">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+                <p class="mb-8">Ready to grow your business? Contact us today for a consultation.</p>
+                <p>Email: <a href="mailto:info@ethixconsultancy.com" class="text-blue-400 hover:underline">info@ethixconsultancy.com</a></p>
+                <p>Phone: <a href="tel:+91XXXXXXXXXX" class="text-blue-400 hover:underline">+91 XXXXXXXXXX</a></p>
+                <!-- Optionally, add a contact form here later -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Placeholder -->
+    <footer class="bg-gray-900 text-gray-400 py-6 px-6 text-center">
+        <div class="container mx-auto">
+            &copy; <span id="year"></span> Ethix Business Consultancy Pvt. Ltd. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Popup Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="closeModal" class="close-button" aria-label="Close modal">&times;</button>
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Quick Inquiry</h2>
+            <p class="text-gray-600 mb-6">Please provide your details, and we'll get back to you shortly.</p>
+            <form id="modalForm">
+                <div class="mb-4">
+                    <label for="modalName" class="block text-gray-700 text-sm font-medium mb-2">Name</label>
+                    <input type="text" id="modalName" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="modalCompany" class="block text-gray-700 text-sm font-medium mb-2">Company Name</label>
+                    <input type="text" id="modalCompany" name="company" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="modalPhone" class="block text-gray-700 text-sm font-medium mb-2">Phone Number</label>
+                    <input type="tel" id="modalPhone" name="phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="modalEmail" class="block text-gray-700 text-sm font-medium mb-2">Email</label>
+                    <input type="email" id="modalEmail" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">Submit</button>
+                    <!-- NOTE: Submit button currently does nothing without backend -->
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Modal JavaScript
+        const modal = document.getElementById('contactModal');
+        const closeModalButton = document.getElementById('closeModal');
+        const modalForm = document.getElementById('modalForm');
+
+        // Function to show the modal
+        function showModal() {
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        // Function to hide the modal
+        function hideModal() {
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Show modal when the page is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Optional: Add a small delay if you don't want it immediately
+             setTimeout(showModal, 1000); // Show after 1 second
+            // showModal(); // Show immediately
+        });
+
+        // Hide modal when the close button is clicked
+        if (closeModalButton) {
+            closeModalButton.addEventListener('click', hideModal);
+        }
+
+        // Hide modal if user clicks outside the modal content area
+        if (modal) {
+            modal.addEventListener('click', (event) => {
+                // Check if the click was directly on the overlay (not the content)
+                if (event.target === modal) {
+                    hideModal();
+                }
+            });
+        }
+
+        // Handle form submission (currently just prevents default and closes)
+        if (modalForm) {
+            modalForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent actual form submission for now
+                console.log('Form submitted (no backend action)'); // Placeholder
+                // Add code here later to send data to a backend if needed
+                hideModal(); // Close modal after submission
+                 // Display a simple thank you message (optional)
+                alert('Thank you for your inquiry!'); // Use a custom message box instead of alert() in real apps
+            });
+        }
+
+    </script>
+</body>
+</html>
