@@ -85,9 +85,9 @@
     <!-- Header/Navigation -->
     <header class="bg-white shadow-md fixed w-full z-10 top-0">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <!-- *** LOGO ADDED HERE *** -->
+            <!-- *** LOGO SIZE INCREASED HERE *** -->
             <a href="#">
-                <img src="logo.jpg" alt="Ethix Business Consultancy Logo" class="h-10 w-auto"> <!-- Adjust h-10 (height) if needed -->
+                <img src="logo.jpg" alt="Ethix Business Consultancy Logo" class="h-12 w-auto"> <!-- Changed h-10 to h-12 -->
             </a>
             <!-- *** END LOGO *** -->
             <div>
@@ -263,7 +263,23 @@
                 // Add code here later to send data to a backend if needed
                 hideModal(); // Close modal after submission
                  // Display a simple thank you message (optional)
-                alert('Thank you for your inquiry!'); // Use a custom message box instead of alert() in real apps
+                 // Replace alert with a more user-friendly notification if possible
+                const thankYouMsg = document.createElement('div');
+                thankYouMsg.textContent = 'Thank you for your inquiry!';
+                thankYouMsg.style.position = 'fixed';
+                thankYouMsg.style.bottom = '20px';
+                thankYouMsg.style.left = '50%';
+                thankYouMsg.style.transform = 'translateX(-50%)';
+                thankYouMsg.style.backgroundColor = '#2563eb'; // Blue background
+                thankYouMsg.style.color = 'white';
+                thankYouMsg.style.padding = '10px 20px';
+                thankYouMsg.style.borderRadius = '5px';
+                thankYouMsg.style.zIndex = '100';
+                document.body.appendChild(thankYouMsg);
+                setTimeout(() => {
+                    thankYouMsg.remove();
+                }, 3000); // Remove after 3 seconds
+
             });
         }
 
